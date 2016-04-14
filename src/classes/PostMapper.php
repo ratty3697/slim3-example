@@ -16,10 +16,10 @@ class PostMapper extends Mapper
     }
 
     /**
-     * Get one ticket by its ID
+     * Get one post by its ID
      *
-     * @param int $ticket_id The ID of the ticket
-     * @return TicketEntity  The ticket
+     * @param int $post_id The ID of the post
+     * @return SinglePostData
      */
     public function getPostById($post_id) {
         $sql = "SELECT t.id, t.title, t.description, c.type
