@@ -21,31 +21,31 @@ class PostMapper extends Mapper
      * @param int $ticket_id The ID of the ticket
      * @return TicketEntity  The ticket
      */
-    public function getTicketById($ticket_id) {
-        $sql = "SELECT t.id, t.title, t.description, c.component
-            from tickets t
-            join components c on (c.id = t.component_id)
-            where t.id = :ticket_id";
+    public function getPostById($post_id) {
+        $sql = "SELECT t.id, t.title, t.description, c.type
+            from posts t
+            join types c on (c.id = t.type_id)
+            where t.id = :post_id";
         $stmt = $this->db->prepare($sql);
-        $result = $stmt->execute(["ticket_id" => $ticket_id]);
+        $result = $stmt->execute(["post_id" => $post_id]);
 
         if($result) {
-            return new TicketEntity($stmt->fetch());
+            return new SinglePostData($stmt->fetch());
         }
 
     }
 
-    public function save(TicketEntity $ticket) {
-        $sql = "insert into tickets
-            (title, description, component_id) values
+    public function save(SinglePostData $post) {
+        $sql = "insert into posts
+            (title, description, type_id) values
             (:title, :description, 
-            (select id from components where component = :component))";
+            (select id from types where type = :type))";
 
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute([
-            "title" => $ticket->getTitle(),
-            "description" => $ticket->getDescription(),
-            "component" => $ticket->getComponent(),
+            "title" => $post->getTitle(),
+            "description" => $post->getDescription(),
+            "type" => $post->getType(),
         ]);
 
         if(!$result) {

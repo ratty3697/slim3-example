@@ -10,7 +10,8 @@ $container['logger'] = function($c) {
 };
 
 $container['db'] = function ($c) {
-    $db = $c['settings']['db'];
+    //echo $c['settings'];
+    $db = $c['settings']['settings']['dbSettings']['db'];
     $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'],
         $db['user'], $db['pass']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

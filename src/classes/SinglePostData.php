@@ -41,6 +41,6 @@ class SinglePostData
     }
 
     public function getType() {
-        return $this->component;
+        return $this->type;
     }
 }
