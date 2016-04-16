@@ -19,6 +19,13 @@ function utf8ize($d) {
     return $d;
 }
 
+$app->get('/', function (Request $request, Response $response) {
+        $this->logger->addInfo("Home Page");
+        $response = $response->withRedirect("/posts");
+        return $response;
+    });
+
+
 
 $app->group('/posts', function () {
     $this->get('', function (Request $request, Response $response) {
@@ -53,6 +60,7 @@ $app->group('/posts', function () {
         }
 
         $response->getBody()->write(var_export('{"status":"successfully added!!"}' , true));
+        $response = $response->withRedirect("/posts");
         return $response;
     });
 

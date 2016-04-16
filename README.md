@@ -2,6 +2,7 @@
 
 This is simple slim app for adding Posts , display posts & delete posts. <br>
 <br>
+<b>Library used => </b> <i>'slim/slim' , 'monolog/monolog' , 'robmorgan/phinx' , 'slim/twig-view' , 'slim/php-view'</i><br><br>
 <h1>How to run this app ?</h1>
 <br>
 step 1.)move to 'src' directory and run this command <br>

@@ -19,9 +19,10 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
+//uncomment this to use TWIG VIEWS
 /*$container['view'] = function ($container) {
     $view = new \Slim\Views\Twig('../templates/', [
-        'cache' => 'path/to/cache'
+        'cache' => 'cache'
     ]);
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
