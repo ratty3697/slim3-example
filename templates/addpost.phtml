@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Add Your Post</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>NEw Post</h1>
+
+<form class="pure-form" method="post" action="/posts/new">
+    <label for="title">Title</label>
+    <input name="title" id="title" type="text" size="60" /><br />
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description" rows="6" cols="80"></textarea><br />
+
+    <label for="type">Type</label>
+    <select name="type">
+        <option value=""></option>
+<?php
+if($data['types'] && is_array($data['types'])): 
+    foreach($data['types'] as $type): ?>
+
+        <option value=<?=$type->getName()?>><?=$type->getName()?></option>
+<?php
+    endforeach;
+endif;
+?>
+    </select><br />
+
+    <input type="submit" class="pure-button" value="Save" />
+</form>
+
+</body>
+</html>
+
+
